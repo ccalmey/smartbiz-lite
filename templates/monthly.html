@@ -1,0 +1,76 @@
+<!--
+#SMARTBIZ MVP 
+#SYSTEM DEVELOPER: CALMEY CROWN @rown.calmey 
+#START DATE: 11.02.2026
+#UPDATE: 11.02.2026
+
+-->
+
+{%extends "base.html" %}
+{%block title%} Monthly Report {%endblock%}
+
+{%block content%}
+<!--MONTHLY BREAKDOWN-->
+<div class='dashboard-section'>
+    <div class='section-header'>
+        <h2>Monthly Business Summary</h2>
+    </div>
+            <table class='data-table'>
+                <thead>
+                <tr>
+                    <th>Monthly</th>
+                    <th>Sales</th>
+                    <th>Expenses</th>
+                    <th>Profit</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in monthly %}
+            <tr>
+                <td>{{row.month}}</td>
+                <td>Ksh. {{row.sales}}</td>
+                <td>Ksh. {{row.expenses}}</td>
+                <td><strong>Ksh. {{row.profit}}</strong></td>
+            </tr>
+            {%else%}
+            <tr>
+                <td colspan='4'>No data this week</td>
+            </tr>
+            {%endfor%}
+            </tbody>
+            </table>
+
+        <h3>Monthly Top Items</h3>
+        <table class='data-table'>
+            <thead>
+            <tr>
+                <th>Month</th>
+                <th>Items</th>
+                <th>Qty Sold</th>
+                <th>Total Revenue</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in monthly_items %}
+        <tr>
+            <td>{{item.month}}</td>
+            <td>Ksh. {{item.item}}</td>
+            <td>Ksh. {{item.total_qty}}</td>
+            <td><strong>Ksh. {{item.total_amount}}</strong></td>
+        </tr>
+        {%else%}
+        <tr>
+            <td colspan='4'>No data this week</td>
+        </tr>
+        {%endfor%}
+        </tbody>
+        </table>
+
+        </div>
+        
+          <div class='section-footer'>
+                <a href='/'>Back to Bashboard</a>
+          </div>
+        </div>
+</div>
+{%endblock%}

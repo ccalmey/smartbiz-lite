@@ -1,0 +1,28 @@
+<!--
+#SMARTBIZ MVP 
+#SYSTEM DEVELOPER: CALMEY CROWN @rown.calmey 
+#START DATE: 3.12.2025
+#UPDATE: 17.12.2025
+
+-->
+
+
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+    <h1>Add Expenses </h1>
+    <form method='post' action='/expenses'>
+        <label>Expense name: </label><br>
+        <input type='text' name='name' placeholder="Name" required><br><br>
+
+        <label>Amount (ksh):</label><br>
+        <input type='number' name='amount' placeholder="Enter Amount" required><br><br>
+
+        <button type='submit'>Save Expense</button>
+    </form>
+
+    <div class="back-link">
+    <p><a href="/">Back to Dashborad</a></p>
+    </div>
+{% endblock %}
+

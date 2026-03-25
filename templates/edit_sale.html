@@ -1,0 +1,34 @@
+<!--
+#SMARTBIZ MVP 
+#SYSTEM DEVELOPER: CALMEY CROWN @rown.calmey 
+#START DATE: 26.12.2025
+#UPDATE: 27.12.2025
+
+-->
+
+
+{% extends "base.html" %}
+{% block title %}Edit Sale{% endblock %}
+
+{% block content %}
+
+    <h3>Edit Sale </h3>
+
+    <form method='post'>
+        <label>Item </label>
+        <input type='text' name='item' placeholder='Name' value='{{sale['item']}}' required>
+
+        <label>Amount (ksh):</label>
+        <input type='number' name='amount' placeholder='Amount'  value='{{sale['amount']}}'required>
+
+        <label>Quantity: <lbel>
+        <input type='number' name='quantity' placeholder='Quantity' value='{{sale['quantity']}}' required>
+
+        <button type='submit'>Update Sale</button>
+    </form>
+
+    <div class="section-footer">
+      <a href='/history/sales'>Back to sales history</a>
+    </div>
+
+{% endblock %}

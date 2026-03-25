@@ -1,0 +1,32 @@
+<!--
+#SMARTBIZ MVP 
+#SYSTEM DEVELOPER: CALMEY CROWN @rown.calmey 
+#START DATE: 3.12.2025
+#UPDATE: 21.12.2025
+
+-->
+
+
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+    <h1>Add Sale </h1>
+
+    <form method='post' action='/sales'>
+        <label>Item name: </label><br>
+        <input type='text' name='item' placeholder="Item name" required><br><br>
+
+        <label>Amount (ksh):</label><br>
+        <input type='number' name='amount' step="0.01" placeholder="Enter Amount" required><br><br>
+
+        <label>Quantity: <label><br>
+        <input type='number' name='quantity' placeholder="Quantity" required><br><br>
+
+        <button type='submit'>Save Sale</button>
+    </form>
+
+    <div class="back-link">
+    <p> <a href='/'>Back to Dashborad</a></p>
+    </div>
+{% endblock %}

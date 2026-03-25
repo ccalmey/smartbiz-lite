@@ -1,0 +1,21 @@
+<!--
+#SMARTBIZ MVP 
+#SYSTEM DEVELOPER: CALMEY CROWN @rown.calmey 
+#START DATE: 06.01.2026
+#UPDATE: 06.01.2026
+
+-->
+{% extends "base.html" %}
+
+{% block title %}Confirm PIN{%endblock%}
+
+{% block content %}
+
+<h3>Enter PIN to proceed</h3>
+<form method="POST" action="{{url_for('pin_login', next=next_url)}}">
+    <input type='password' name='pin' placeholder='Enter PIN' required>
+    <input type='hidden' name='next' value='{{next_url}}'>
+    <button type='submit'>Confirm</button>
+</form>
+
+{% endblock %}

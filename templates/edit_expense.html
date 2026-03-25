@@ -1,0 +1,33 @@
+
+
+<!--
+#SMARTBIZ MVP 
+#SYSTEM DEVELOPER: CALMEY CROWN @rown.calmey 
+#START DATE: 27.12.2025
+#UPDATE: 27.12.2025
+
+-->
+
+
+{% extends "base.html" %}
+{% block title %}Edit Sale{% endblock %}
+
+{% block content %}
+
+    <h3>Edite Expense </h3>
+
+    <form method='post'>
+        <label>Expense Name </label>
+        <input type='text' name='name' placeholder='Name' value='{{expenses['name']}}' required>
+
+        <label>Amount (ksh):</label>
+        <input type='number' name='amount' placeholder='Amount'  value='{{expenses['amount']}}'required>
+
+        <button type='submit'>Update Expense</button>
+    </form>
+
+    <div class="section-footer">
+      <a href='/history/expenses'>Back to expense history</a>
+    </div>
+
+{% endblock %}

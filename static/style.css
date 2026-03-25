@@ -1,0 +1,412 @@
+
+/* 
+#SMARTBIZ MVP 
+#SYSTEM DEVELOPER: CALMEY CROWN @rown.calmey 
+#START DATE: 3.12.2025
+#UPDATE: 18.03.2026
+
+*/
+
+
+/* root style */
+
+:root{
+    --bg: #ffffff;
+    --text: #111111;
+    --card-bg: #f9f9f9;
+    --card-bgDark : #6e6e6e;
+    --accent: #D4AF37;
+    --deep-accent: #C6A667;
+    --bussiness-green: #2ECC71;
+}
+
+
+/* Global layout */
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* wrapper to center content with some top spacing */
+.page{
+    margin-top: 10px;
+    width: 100%;
+    max-width: auto;
+    padding: 0px 16px;
+}
+
+/* Main card */
+
+.card{
+    /* DEFAULT (light mode) */
+    background-image: "url('.../images/aaliya.jpg')";
+    background: var(--card-bg);
+    color: var(--text);
+    transition: 2s ease;
+    border-radius: 16px;
+    box-shadow: 0 18px 40px var(--accent);
+    border: 1px solid var(--bg);
+    border-left: 4px solid var(--bussiness-green);
+    padding: 24px;
+    min-height: 400px;
+}
+
+/* DARK MODE ONLY FOR THE CARD */
+.card[data-theme="dark"]{
+    --card-bg: "var(--card-bgDark)";
+    --text: #e5e7eb;
+    --accent: #D4AF37;
+    --bussiness-green: #159947;
+    transition: 2s ease;
+    background: #111111;
+    box-shadow: none;
+    border-left: none;
+}
+
+.card:hover{
+    border-left: "4px solid var(--bussiness-green)";
+    box-shadow: "0 18px 40px var(--bussiness-green)";
+}
+
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.theme-btn{
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--text);
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.theme-btn:hover{
+    background: var(--bussiness-green);
+    color: #fff;
+}
+/* Titles */
+.card h1, 
+.card h2,
+.cardh3{
+    margin-top: 0;
+    color: var(--text);
+}
+
+/* Link like buttons */
+.actions{
+    margin-top: 12px;
+}
+
+.actions a{
+    display: inline-block;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.9 rem;
+    font-weight: bold;
+    border: "1px solid rgba(148, 163, 184, 0.6)";
+    color: var(--text);
+    background: "var(--accent)";
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+}
+
+.actions a:hover{
+    background: var(--bussiness-green);
+    box-shadow: 0 10px 20px rgba(15, 118, 110, 0.4);
+    transform: translateY(-1px);
+}
+
+/* forms */
+form{
+    margin-top: 12px;
+}
+
+label{
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+input[type="text"],
+input[type="number"]{
+    width: 100%;
+    padding: 8px 16px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    background: var(--bg);
+    color: var(--text);
+    box-sizing: border-box;
+}
+
+button{
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    background: var(--accent);
+    transition: transform 0.1s ease, box-shadow 1.0s ease, background 0.15s ease;
+}
+
+button:hover{
+    background: var(--bussiness-green);
+    transition: translateY(-1px);
+}
+
+/* Back link */
+.back-link{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.back-link a{
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.back-link a:hover{
+    color: var(--text);
+    text-decoration: underline;
+}
+
+/* MINI CARD POLISHES */
+.today-summery{
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: var(--card-bg)
+}
+
+.today-summery h3{
+    margin-bottom: 0.8rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.summery-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.summery-row:last-child{
+    border-bottom: none;
+}
+
+.summery-row strong{
+    font-weight: 600;
+}
+
+.profit strong{
+    color: green;
+}
+
+
+.dashboard-section{
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 14px;
+    background: var(--card-bg);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.section-header h3{
+    margin: 0;
+}
+
+.section-header small{
+    color: #9ca3af;
+}
+
+.section-body{
+    margin-top: 12px;
+}
+
+.row-item{
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(148, 163, 184, 0.2);
+}
+
+.row-item strong{
+    color: var(--bussiness-green)
+}
+
+.section-footer{
+    margin-top: 10px;
+}
+
+.data-table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+.data-table th,
+.data-table td{
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid rgba(148,163,184,0.2);
+}
+
+.data-table th{
+    font-weight: 600;
+    color: #9ca3af;
+}
+
+.data-table tbody tr:hover{
+    background: rgba(148, 163, 184, 0.05);
+}
+
+.summary-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.summary-box{
+    background: rgba(148, 163, 184, 0.08);
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.summary-box span{
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+.summary-box strong{
+    display: block;
+    margin-top: 4px;
+    font-size: 1.1rem;
+}
+
+.summary-box profit strong{
+    color: var(--bussiness-green)
+}
+
+/* FLASH MESSAGES */
+.flash-wrapper{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.flash{
+    background: var(--accent);
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    margin-bottom: 10px;
+    opacity: 1;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.flash button{
+    margin-left: 10px;
+    background: #4caf50;
+    border: none;
+    padding: 6px 10px;
+    color: white;
+    cursor: pointer;
+}
+/* flash categories */
+.flash-success{background: #2ecc71;}
+.flash-error{background: #e74c3c;}
+.flash-warning{background: #f39c12;}
+.flash-info{background: #3498db;}
+
+/* fade-out state */
+.flash.hide{
+    opacity:0;
+    transform: translateY(-10px);
+}
+
+.flash-danger{
+    background: rgba(231, 76, 60, 0.15);
+    color: #c0392b;
+    border: 1px solid #e74c3c;
+}
+
+.flash-info{
+    background: rgba(212, 175, 55, 0.15);
+    color: #D4AF37;
+    border: 1px solid #D4AF37;
+}
+
+/* CONFIRMATIONS */
+.confirm-modal{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.confirm-box{
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+}
+
+.confirm-actions{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.confirm-actions button{
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#confirm-yes{
+    background: #e74c3c;
+    color: #fff;
+}
+
+#confirm-no{
+    background: #ccc;
+}
+
+.hidden{
+    display: none;
+}
+
+.inline-form{
+    display: inline;
+}
+
+.delete-btn{
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    margin-left: 8px;
+}

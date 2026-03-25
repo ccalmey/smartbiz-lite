@@ -1,0 +1,326 @@
+<!--
+#SMARTBIZ MVP 
+#SYSTEM DEVELOPER: CALMEY CROWN @rown.calmey 
+#START DATE: 3.12.2025
+#UPDATE: 18.03.2026
+
+-->
+
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+<!--DASHBOARD SUMMERY SECTION-->
+<div class='dashboard-section'>
+    <div class='section-header'>
+        <h3>Summary</h3>
+            <small>All-time business performance</small>
+        </div>
+
+            <div class='section-body summary-grid'>
+                <div class='summary-box'>
+                <p>Total sales: <strong>Ksh.{{total_sales}}</strong></p>
+                </div>
+                <div class='summary-box'>
+                <p>Total Expenses: <strong>Ksh.{{total_expenses}}</strong></p>
+                </div>
+                <div class='summary-box'>
+                <p>Total Profit: <strong style='color: green'>Ksh.{{profit}}</strong></p>
+                </div>
+            </div>
+</div>
+
+
+<!--TODAY SUMMERY SECTION-->
+<div class='dashboard-section'>
+    <div class='section-header'>
+        <h3>Today</h3>
+            <small>{{current_date}}</small>
+        </div>
+
+           <div class='section-body summary-grid'>
+            <div class='summary-box'>
+                <p>Total sales: <strong>Ksh.{{today_sales}}</strong></p>
+            </div>
+            <div class='summary-box'>
+                <p>Total Expenses: <strong>Ksh.{{today_expenses}}</strong></p>
+           </div>
+           <div class='summary-box'>
+                <p>Total Profit: <strong style='color: green'>Ksh.{{today_profit}}</strong></p>
+           </div>
+           </div>
+</div>
+
+<!--TODAY'S TOP ITEM SECTION-->
+
+<div class='dashboard-section'>
+    <div class='section-header'>
+        <h3>Today's Top Items</h3>
+            <small>Sales performance (today)</small>
+        </div>
+
+            <div class='section-body'>
+                <table class='data-table'>
+                    <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Qty Sold</th>
+                        <th>Total (Ksh.)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in daily_top_items %}
+                <tr>
+                    <td>{{item.item}}</td>
+                    <td>{{item.total_qty}}</td>
+                    <td><strong>Ksh. {{item.total_amount}}</strong></td>
+                </tr>
+                {%else%}
+                <tr>
+                    <td colspan='3'>No sales today</td>
+                </tr>
+                {%endfor%}
+                </tbody>
+                </table>
+            </div>
+</div>
+
+<!--THIS WEEK SUMMERY-->
+<div class='dashboard-section'>
+    <div class='section-header'>
+        <h3>This Week</h3>
+        <small>Monday - Today</small>
+    </div>
+
+           <div class='section-body summary-grid'>
+            <div class='summary-box'>
+                <span>Sales</span>
+                <strong>Ksh. {{week_sales}}</strong>
+            </div>
+
+            <div class='summary-box'>
+                <span>Expense</span>
+                <strong>Ksh. {{week_expenses}}</strong>
+            </div>
+
+            <div class='summary-box profit'>
+                <span>Profit</span>
+                <strong>Ksh. {{week_profit}}</strong>
+            </div>
+            </div>
+</div>
+
+
+<!--THIS WEEK'S TOP ITEM SECTION-->
+
+<div class='dashboard-section'>
+    <div class='section-header'>
+        <h3>This Week's Top Items</h3>
+            <small>Sales performance (This Week)</small>
+        </div>
+
+            <div class='section-body'>
+                <table class='data-table'>
+                    <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Qty Sold</th>
+                        <th>Total (Ksh.)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in weekly_top_items %}
+                <tr>
+                    <td>{{item.item}}</td>
+                    <td>{{item.total_qty}}</td>
+                    <td><strong>Ksh. {{item.total_amount}}</strong></td>
+                </tr>
+                {%else%}
+                <tr>
+                    <td colspan='3'>No sales today</td>
+                </tr>
+                {%endfor%}
+                </tbody>
+                </table>
+            </div>
+</div>
+
+
+<!--WEEKLY BREAKDOWN-->
+<div class='dashboard-section'>
+    <div class='section-header'>
+        <h3>Weekly Breakdown</h3>
+        <small>Day-by-day performance</small>
+    </div>
+
+           <div class='section-body'>
+            <table class='data-table'>
+                <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Sales</th>
+                    <th>Expenses</th>
+                    <th>Profit</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for day in weekly_breakdown %}
+            <tr>
+                <td>{{day.day}}</td>
+                <td>Ksh. {{day.sales}}</td>
+                <td>Ksh. {{day.expenses}}</td>
+                <td><strong style='color:{{'var(--business-green)' if day.profit >= 0 else 'crimson'}}'>Ksh.
+                {{day.profit}}</strong></td>
+            </tr>
+            {%else%}
+            <tr>
+                <td colspan='4'>No data this week</td>
+            </tr>
+            {%endfor%}
+            </tbody>
+            </table>
+            </div>
+</div>
+
+<!--MONTHLY BREAKDOWN-->
+<div class='dashboard-section'>
+    <div class='section-header'>
+        <h3>Monthly Business Summary</h3>
+    </div>
+
+           <div class='section-body'>
+            <table class='data-table'>
+                <thead>
+                <tr>
+                    <th>Monthly</th>
+                    <th>Sales</th>
+                    <th>Expenses</th>
+                    <th>Profit</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in monthly %}
+            <tr>
+                <td>{{row.month}}</td>
+                <td>Ksh. {{row.sales}}</td>
+                <td>Ksh. {{row.expenses}}</td>
+                <td><strong>Ksh.{{row.profit}}</strong></td>
+            </tr>
+            {%else%}
+            <tr>
+                <td colspan='4'>No sales recorded in February yet</td>
+            </tr>
+            {%endfor%}
+            </tbody>
+            </table>
+
+        <h3>Monthly Top Items</h3>
+        <table class='data-table'>
+            <thead>
+            <tr>
+                <th>Month</th>
+                <th>Items</th>
+                <th>Qty Sold</th>
+                <th>Total Revenue</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in monthly_items %}
+        <tr>
+            <td>{{item.month}}</td>
+            <td> {{item.item}}</td>
+            <td>{{item.total_qty}}</td>
+            <td><strong>Ksh.{{item.total_amount}}</strong></td>
+        </tr>
+        {%else%}
+        <tr>
+            <td colspan='4'>No sales recorded in February yet</td>
+        </tr>
+        {%endfor%}
+        </tbody>
+        </table>
+
+            </div>
+</div>
+
+<!--RECENT SALES TABLE-->
+
+<div class='dashboard-section'>
+    <div class='section-header'>
+        <h3>Recent Sales</h3>
+            <small>Last 5 Transactions</small>
+        </div>
+
+            <div class='section-body'>
+                <table class='data-table'>
+                    <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for sale in recent_sales %}
+                <tr>
+                    <td>{{sale.item}}</td>
+                    <td>{{sale.quantity}}</td>
+                    <td>Ksh. {{sale.amount}}</td>
+                    <td><strong>Ksh. {{sale.total}}</strong></td>
+                    <td>{{sale.created_at}}</td>
+                </tr>
+                {%else%}
+                <tr>
+                    <td colspan='5'>No sales yet</td>
+                </tr>
+                {%endfor%}
+                </tbody>
+                </table>
+            </div>
+                <div class='section-footer'>
+                    <a href='/history/sales'>View all sales</a>
+                </div>
+</div>
+
+<!--RECENT EXPENSES TABLE-->
+
+
+<div class='dashboard-section'>
+    <div class='section-header'>
+        <h3>Recent Expenses</h3>
+            <small>Last 5 Expenses</small>
+        </div>
+    
+                <div class='section-body'>
+                    <table class='data-table'>
+                        <thead>
+                            <tr>
+                                <th>Expenses</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                    {% for exp in recent_expenses %}
+                    <tr>
+                        <td>{{exp.name}}</td>
+                        <td>Ksh. {{exp.amount}}</td>
+                        <td>{{exp.created_at}}</td>
+                    </tr>
+                    {%else%}
+                    <tr>
+                        <td colspan='3'>No expenses yet</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+
+          <div class='section-footer'>
+                <a href='/history/expenses'>View all expenses</a>
+          </div>
+</div>
+
+{%endblock%}

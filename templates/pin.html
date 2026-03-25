@@ -1,0 +1,25 @@
+<!--
+#SMARTBIZ MVP 
+#SYSTEM DEVELOPER: CALMEY CROWN @rown.calmey 
+#START DATE: 30.12.2025
+#UPDATE: 07.01.2026
+
+-->
+
+{% extends "base.html" %}
+{% block title %} Enter PIN {% endblock%}
+
+{%block content %}
+
+<div class="pin-box">
+    <h3>Enter Business PIN</h3>
+
+    <form method="POST">
+        <input type='password' name='pin' placeholder='****' required>
+        <input type='hidden' name='next' value="{{next_url}}">
+        <input type='hidden' name='action_key' value="{{action_key}}">
+        <button type='submit'>Unlock</button>
+    </form>
+</div>
+
+{%endblock%}

@@ -1,0 +1,70 @@
+<!--
+#SMARTBIZ MVP 
+#SYSTEM DEVELOPER: CALMEY CROWN @rown.calmey 
+#START DATE: 17.12.2025
+#UPDATE: 18.03.2026
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SmartBiz Lite {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div class="page">
+      <div class='card' id='card' data-theme='light'>
+
+        <!--FLASH MESSAGES-->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class='flash-wrapper'>
+            {% for category, message in messages %}
+            <div class='flash flash-{{category}}'>
+                {{message}}
+
+                {% if category == 'undo_sale' %}
+                <form method="POST" action="{{url_for('undo_sale')}}" style="display:inline;">
+                <button type="submit">Undo Sale</button>
+                </form>
+                {%endif%}
+                {%if category == 'undo_expense' %}
+                <form method="POST" action="{{url_for('undo_expense')}}" style="display:inline;">
+                    <button type="submit">Undo Expense</button>
+                    </form>
+                {%endif%}
+            </div>
+            {%endfor%}
+        </div>
+        {%endif%}
+        {%endwith%}
+
+        <!--HEADER-->
+        <div class='card-header'>
+        <h2>SmartBiz Lite</h2>
+        <div class='section-body actions'>
+        <a href="/sales">Add Sale</a>
+        <a href="/expenses">Add Expenses</a>
+        <a href='/daily'>Daily Summery</a>
+        <a href="/history/sales">Sales History</a>
+        <a href="/history/expenses">Expenses History</a>
+        <a href="/monthly">Monthly Report</a>
+        <a href="/monthly">Currency</a>
+    </div>
+
+        <button id="theme-toggle" class='theme-btn'>Mode</button>
+        </div>
+        
+        <!--PAGE CONTENT-->
+        {% block content %}{% endblock %}
+        </div>
+        </div>
+    <script src="{{url_for('static', filename='theme.js')}}"></script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!--
+#SMARTBIZ MVP 
+#SYSTEM DEVELOPER: CALMEY CROWN @rown.calmey 
+#START DATE: 07.01.2026
+#UPDATE: 07.01.2026
+
+-->
+
+{% extends "base.html" %}
+{% block title %} Enter PIN {% endblock%}
+
+{%block content %}
+
+<div class="pin-box">
+    <h3>Confirm PIN</h3>
+
+    <form method="POST" action="{{action_url}}">
+        <button type='submit' style='display:none'>Unlock</button>
+    </form>
+</div>
+
+{%endblock%}
