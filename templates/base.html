@@ -2,69 +2,97 @@
 #SMARTBIZ MVP 
 #SYSTEM DEVELOPER: CALMEY CROWN @rown.calmey 
 #START DATE: 17.12.2025
-#UPDATE: 18.03.2026
-
+#UPDATE: 15.04.2026
 -->
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}SmartBiz Lite {% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+    
+    <title>{% block title %}SmartBiz Lite{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
+
 <body>
-    <div class="page">
-      <div class='card' id='card' data-theme='light'>
 
-        <!--FLASH MESSAGES-->
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        <div class='flash-wrapper'>
-            {% for category, message in messages %}
-            <div class='flash flash-{{category}}'>
-                {{message}}
+<div class="page">
 
-                {% if category == 'undo_sale' %}
-                <form method="POST" action="{{url_for('undo_sale')}}" style="display:inline;">
-                <button type="submit">Undo Sale</button>
-                </form>
-                {%endif%}
-                {%if category == 'undo_expense' %}
-                <form method="POST" action="{{url_for('undo_expense')}}" style="display:inline;">
-                    <button type="submit">Undo Expense</button>
-                    </form>
-                {%endif%}
+    <div class="card" id="card" data-theme="light">
+
+        <!-- ================= FLASH SYSTEM ================= -->
+        <div class="flash-wrapper">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash flash-{{ category }}">
+                        <span>{{ message }}</span>
+
+                        {% if category == 'undo_sale' %}
+                            <form method="POST" action="{{ url_for('undo_sale') }}" class="inline-form">
+                                <button type="submit">Undo</button>
+                            </form>
+                        {% endif %}
+
+                        {% if category == 'undo_expense' %}
+                            <form method="POST" action="{{ url_for('undo_expense') }}" class="inline-form">
+                                <button type="submit">Undo</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        <!-- ================= HEADER ================= -->
+        <div class="card-header">
+
+            <!-- LEFT SIDE -->
+            <div class="header-left">
+                <h2 class="header-title">SmartBiz Lite</h2>
+                <small>Business Dashboard</small>
             </div>
-            {%endfor%}
-        </div>
-        {%endif%}
-        {%endwith%}
 
-        <!--HEADER-->
-        <div class='card-header'>
-        <h2>SmartBiz Lite</h2>
-        <div class='section-body actions'>
-        <a href="/sales">Add Sale</a>
-        <a href="/expenses">Add Expenses</a>
-        <a href='/daily'>Daily Summery</a>
-        <a href="/history/sales">Sales History</a>
-        <a href="/history/expenses">Expenses History</a>
-        <a href="/monthly">Monthly Report</a>
-        <a href="/monthly">Currency</a>
+            <!-- RIGHT SIDE -->
+            <div class="header-actions">
+
+                <!-- QUICK ACTIONS -->
+                <div class="dropdown">
+                    <button class="dropbtn">⚡ Quick Actions ▾</button>
+
+                    <div class="dropdown-content">
+                        <a href="/sales">Add Sale</a>
+                        <a href="/expenses">Add Expense</a>
+                        <a href="/daily">Daily Summary</a>
+                        <a href="/history/sales">Sales History</a>
+                        <a href="/history/expenses">Expense History</a>
+                        <a href="/monthly">Monthly Report</a>
+                    </div>
+                </div>
+
+                <!-- THEME TOGGLE -->
+                <button id="theme-toggle" class="theme-btn">
+                    🌙 Mode
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- ================= PAGE CONTENT ================= -->
+        <div class="card-body">
+            {% block content %}{% endblock %}
+        </div>
+
     </div>
+</div>
 
-        <button id="theme-toggle" class='theme-btn'>Mode</button>
-        </div>
-        
-        <!--PAGE CONTENT-->
-        {% block content %}{% endblock %}
-        </div>
-        </div>
-    <script src="{{url_for('static', filename='theme.js')}}"></script>
+<!-- ================= SCRIPTS ================= -->
+<script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+<script src="{{ url_for('static', filename='js/notifications.js') }}"></script>
 
 </body>
 </html>
