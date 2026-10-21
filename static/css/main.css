@@ -1,0 +1,306 @@
+/*
+#SMARTBIZ MVP 
+#SYSTEM DEVELOPER: CALMEY CROWN @rown.calmey 
+#START DATE: 3.12.2025
+#UPDATE: 15.04.2026
+
+*/
+
+
+/* =========================================
+   SMARTBIZ MVP - SAAS CLEAN DESIGN SYSTEM
+   Developer: Calmey Crown
+   ========================================= */
+
+/* ================= ROOT ================= */
+:root {
+    --bg: #f6f7fb;
+    --text: #111827;
+
+    --card: #ffffff;
+    --muted: #6b7280;
+
+    --accent: #D4AF37;
+    --green: #2ecc71;
+
+    --border: rgba(17, 24, 39, 0.08);
+
+    --shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+/* ================= RESET ================= */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* ================= PAGE WRAPPER ================= */
+.page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ================= CARD ================= */
+.card {
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+
+    padding: 20px;
+    transition: all 0.25s ease;
+}
+
+/* ================= HEADER ================= */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+/* LEFT HEADER */
+.header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.header-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* RIGHT HEADER */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ================= BUTTON ================= */
+.theme-btn {
+    border: 1px solid var(--border);
+    background: transparent;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.theme-btn:hover {
+    background: var(--green);
+    color: #fff;
+}
+
+/* ================= DROPDOWN ================= */
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    border: none;
+    background: var(--accent);
+    padding: 8px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 110%;
+    right: 0;
+
+    display: none;
+    min-width: 190px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    box-shadow: var(--shadow);
+    overflow: hidden;
+
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 12px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.dropdown-content a:hover {
+    background: rgba(46, 204, 113, 0.1);
+}
+
+/* ================= DASHBOARD SECTIONS ================= */
+.dashboard-section {
+    margin-top: 16px;
+    padding: 16px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    transition: all 0.2s ease;
+}
+
+.dashboard-section:hover {
+    transform: translateY(-2px);
+}
+
+/* SECTION HEADER */
+.section-header h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.section-header small {
+    color: var(--muted);
+}
+
+/* ================= SUMMARY ================= */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+.summary-box {
+    background: rgba(0,0,0,0.03);
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.summary-box span {
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.summary-box strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 1.1rem;
+}
+
+/* ================= TABLES ================= */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.data-table th,
+.data-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+.data-table th {
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.data-table tbody tr:hover {
+    background: rgba(0,0,0,0.03);
+}
+
+/* ================= LINKS ================= */
+a {
+    color: var(--green);
+}
+
+/* ================= FLASH ================= */
+.flash-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.flash {
+    background: var(--accent);
+    color: #fff;
+
+    padding: 10px 14px;
+    border-radius: 10px;
+
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+}
+
+/* ================= DARK MODE (SAAS LEVEL) ================= */
+.card[data-theme="dark"] {
+    --bg: #0b1220;
+    --card: #111827;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --border: rgba(255,255,255,0.08);
+    --shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+    background: var(--card);
+    color: var(--text);
+}
+
+/* sections */
+.card[data-theme="dark"] .dashboard-section {
+    background: #0f172a;
+}
+
+/* tables */
+.card[data-theme="dark"] .data-table tbody tr:hover {
+    background: rgba(255,255,255,0.04);
+}
+
+/* summary */
+.card[data-theme="dark"] .summary-box {
+    background: rgba(255,255,255,0.05);
+}
+
+/* dropdown */
+.card[data-theme="dark"] .dropdown-content {
+    background: #111827;
+}
+
+/* buttons */
+.card[data-theme="dark"] .theme-btn {
+    border-color: var(--border);
+}
+
+/* smooth transitions */
+.card,
+.dashboard-section,
+.summary-box,
+.data-table,
+.dropdown-content {
+    transition: all 0.25s ease;
+}
